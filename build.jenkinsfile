@@ -1,5 +1,5 @@
 node('maven') {
     stage('maven test') {
-        script "maven -v"
+        s "mvn deploy"
     }
 }

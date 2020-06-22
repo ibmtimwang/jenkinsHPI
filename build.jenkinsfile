@@ -1,3 +1,22 @@
+def scmUrlOCP = "https://github.com/ibmtimwang/jenkinsHPI.git"
+node('master') {
+    try {
+        dir('project'){
+            stage("Checkout project") {
+                sh "git config --global http.sslVerify fails"
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "*/master"]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extenstions: [],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: scmUrlOCP]]
+                ])
+                sh "git status"
+            }
+        }
+    }
+}
 node('maven') {
     stage('maven test') {
         s "mvn deploy"

@@ -1,4 +1,8 @@
+import static groovy.io.FileType.DIRECTORIES
+import static groovy.io.FileType.FILES
+
 def scmUrlOCP = "https://github.com/ibmtimwang/jenkinsHPI.git"
+
 node('master') {
     try {
         dir('project'){
@@ -17,6 +21,7 @@ node('master') {
         }
     }
 }
+
 node('maven') {
     stage('maven test') {
         s "mvn deploy"

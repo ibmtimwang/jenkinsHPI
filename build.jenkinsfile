@@ -7,7 +7,7 @@ node('master') {
     try {
         dir('project'){
             stage("Checkout project") {
-                sh "git config --global http.sslVerify false"
+                //sh "git config --global http.sslVerify false"
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "*/master"]],

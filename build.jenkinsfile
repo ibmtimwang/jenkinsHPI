@@ -20,10 +20,15 @@ node('master') {
             }
         }
     }
+    catch(Exception e) {
+        echo e.toString()
+        currentBuild.result = status
+    }
 }
 
 node('maven') {
     stage('maven test') {
-        s "mvn deploy"
+        sh "ls"
+        sh "mvn deploy"
     }
 }
